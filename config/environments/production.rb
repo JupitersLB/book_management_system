@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_mailer.default_url_options = :host
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -51,7 +51,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "book_management_system_production"
+  # config.active_job.queue_name_prefix = "dummy_book_api_no_auth_production"
 
   config.action_mailer.perform_caching = false
 
