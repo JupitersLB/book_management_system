@@ -22,7 +22,7 @@ puts 'Creating Books'
   params = {}
   params[:title] = Faker::Book.title
   params[:available_quantity] = rand(5..9)
-  params[:fee] = 3.times.map { rand(0..9) }.join
+  params[:fee] = 350
   new_book = Book.create(params)
   puts "Created book #{new_book.id}"
 end
