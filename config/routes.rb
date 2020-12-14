@@ -9,5 +9,12 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
+
+    resources :borrowed_books, only: %i[index create] do
+      collection do
+        patch 'return_book'
+        get 'status'
+      end
+    end
   end
 end
