@@ -44,6 +44,12 @@ RSpec.describe 'BorrowedBooks API', type: :request do
         expect(json_response['borrowed_book']['user_id']).to eq(user.id)
       end
 
+      it "reduces book's available quantity" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['borrowed_book']['book_available_quantity'])
+          .to eq(book.available_quantity - 1)
+      end
+
       it 'returns status code 200' do
         expect(response.status).to eq(200)
       end
@@ -60,7 +66,7 @@ RSpec.describe 'BorrowedBooks API', type: :request do
         expect(response.status).to eq(422)
       end
 
-      it 'returns a validation failure message' do
+      it 'returns a validation failure message for insufficient balance' do
         json_response = JSON.parse(response.body)
         expect(json_response['errors'][0]['BorrowedBook'].join)
           .to eq('Balance for User is insufficient')
@@ -84,6 +90,18 @@ RSpec.describe 'BorrowedBooks API', type: :request do
       it 'updates the record' do
         json_response = JSON.parse(response.body)
         expect(json_response['borrowed_book']['book_returned']).to eq(true)
+      end
+
+      it "increases book's available quantity" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['borrowed_book']['book_available_quantity'])
+          .to eq(borrowed_book.book.available_quantity + 1)
+      end
+
+      it "reduces the user's balance by the book fee" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['borrowed_book']['new_user_balance'])
+          .to eq(user.balance - book.fee)
       end
 
       it 'returns status code 200' do

@@ -17,11 +17,10 @@ class BorrowedBooksController < ApplicationController
     @borrowed_book = BorrowedBook.where(borrowed_book_params).first
     @borrowed_book.update(book_returned: true)
     @book = @borrowed_book.book
-    user = @borrowed_book.user
+    @user = @borrowed_book.user
     if @book.increase_available_quantity
       if @borrowed_book.save
-        user.subtract_book_fee(@book)
-        render :create
+        @user.subtract_book_fee(@book)
       else
         render_error(@borrowed_book)
       end

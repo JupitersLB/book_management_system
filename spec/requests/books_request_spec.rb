@@ -25,7 +25,7 @@ RSpec.describe "Books API", type: :request do
     context 'When the record exists' do
       it "JSON body response contains expected book attributes" do
         json_response = JSON.parse(response.body)
-        expect(json_response.keys)
+        expect(json_response['book'].keys)
           .to match_array(%w[id title available_quantity fee])
       end
 

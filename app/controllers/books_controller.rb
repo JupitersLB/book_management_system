@@ -6,11 +6,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    if @book
-      render partial: 'books/book.jbuilder', locals: { book: @book }
-    else
-      not_found
-    end
+    not_found unless @book
   end
 
   def search
