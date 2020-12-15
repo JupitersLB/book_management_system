@@ -1,24 +1,27 @@
-# README
+# Book Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A quick demonstration of a book management system API.
 
-Things you may want to cover:
+You can create a new user, and view the user at a later date to check the balance
+and the books they have borrowed.
 
-* Ruby version
+A user can see a list of books or an individual book where it displays the fee and how
+many are left. The user can also check the earnings of the book in a given timeframe.
 
-* System dependencies
+A user can also view all the borrowed books that are currently on loan and the history.
+They can borrow a new book or return a book which has already been borrowed. Finally,
+they can check how many have been loaned, currently on loan, and the total earnings.
 
-* Configuration
+## Requirements
 
-* Database creation
+Ruby 2.6.6
 
-* Database initialization
+### Start up
 
-* How to run the test suite
+bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+rails db:create db:migrate db:seed
 
-* Deployment instructions
+rails s
 
-* ...
+bundle exec rspec (check tests)
