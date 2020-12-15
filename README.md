@@ -20,13 +20,11 @@ Ruby 2.6.6
 
 ### Start up
 
-bundle install
+``` bundle install ```
 
-rails db:create db:migrate db:seed
+``` rails db:create db:migrate db:seed ```
 
-rails s
-
-bundle exec rspec (check tests)
+``` rails s ```
 
 ### Endpoints
 
@@ -97,6 +95,8 @@ it less than the user’s balance. If it is, it will allow the user to borrow a
 book. The validation only needs to run when a book is created and not updated.
 
 ### Testing
+
+  ``` bundle exec rspec ```
 
   For testing, I decided to go with the rspec and factory bot as this is my
 experience in the past. Creating factories makes it easier to check model validations
