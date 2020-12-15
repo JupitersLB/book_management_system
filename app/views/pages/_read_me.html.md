@@ -106,7 +106,7 @@ and to build while checking API responses.
 
   I decided that for my User model, I would only need a show and create.
 
-  For the Book model, It would need an index and a show. I also made a member
+  For the Book model, it would need an index and a show. I also made a member
 route to search for a book’s earnings during a certain time period.
 
   For the BorrowedBook model, it would need an index and create action. Also, I
