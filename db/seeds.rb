@@ -14,6 +14,15 @@ new_user = User.new(params)
 new_user.save
 puts "Created user #{new_user.id}"
 
+params = {}
+params[:email] = 'sat@library.com'
+params[:password] = 'password'
+params[:account_number] = 'JLB67890'
+params[:balance] = 15000
+new_user = User.new(params)
+new_user.save
+puts "Created user #{new_user.id}"
+
 puts 'Users created'
 
 puts 'Creating Books'
@@ -54,6 +63,15 @@ puts "Created borrowed book #{new_borrowed_book.id}"
 params = {}
 params[:book] = Book.third
 params[:user] = user
+new_borrowed_book = BorrowedBook.new(params)
+new_borrowed_book.save
+new_borrowed_book.update(book_returned: true)
+user.subtract_book_fee(new_borrowed_book.book)
+puts "Created borrowed book #{new_borrowed_book.id}"
+
+params = {}
+params[:book] = Book.third
+params[:user] = User.second
 new_borrowed_book = BorrowedBook.new(params)
 new_borrowed_book.save
 book = new_borrowed_book.book
