@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'deep_pluck'
 gem 'devise'
 gem 'faker'
+gem 'markdown-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
